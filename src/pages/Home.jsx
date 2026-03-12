@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-dark text-white text-center py-5">
+      <div className="bg-light text-center py-5">
         <Container>
           <h1 className="display-4">Soluciones en Higiene y Seguridad Laboral</h1>
           <p className="lead mt-3">
@@ -61,9 +61,6 @@ export default function Home() {
         <Container className="text-center">
           <h2>Contacto</h2>
           <p className="mb-4">¿Necesitás asesoría en higiene y seguridad laboral? Escribime ahora.</p>
-          <Button variant="primary" size="lg" href="mailto:tuemail@ejemplo.com">
-            Enviar Email
-          </Button>
           <Button variant="success" size="lg" href="https://wa.me/5491112345678" className="ms-3">
             WhatsApp
           </Button>
