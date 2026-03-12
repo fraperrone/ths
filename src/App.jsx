@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Footer from './components/Footer'
 
 import MyNavbar from './components/Navbar'
+import Servicios from './components/Servicios'
 
 function App() {
   const [count, setCount] = useState(0)
