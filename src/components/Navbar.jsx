@@ -4,11 +4,11 @@ export default function MyNavbar() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="#inicio">Franco Perrone | Higiene & Seguridad</Navbar.Brand>
+        <Navbar.Brand href="/">Franco Perrone | Higiene & Seguridad</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#inicio">Inicio</Nav.Link>
+            <Nav.Link href="/">Inicio</Nav.Link>
             <Nav.Link href="#servicios">Servicios</Nav.Link>
             {/* Para futuro: */}
             {/* <Nav.Link href="#proyectos">Proyectos</Nav.Link> */}
