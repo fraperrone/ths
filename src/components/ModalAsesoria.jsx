@@ -16,10 +16,10 @@ function ModalAsesoria({ show, handleClose }) {
 
     emailjs
       .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID, // reemplazá con tu Service ID
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // reemplazá con tu Template ID
+        import.meta.env.EMAILJS_SERVICE_ID, // reemplazá con tu Service ID
+        import.meta.env.EMAILJS_TEMPLATE_ID, // reemplazá con tu Template ID
         form.current,
-        import.meta.env.VITE_EMAILJS_USER_ID, // reemplazá con tu User ID
+        import.meta.env.EMAILJS_USER_ID, // reemplazá con tu User ID
       )
       .then(
         (result) => {
