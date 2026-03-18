@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap'
 
-import emailjs from 'emailjs-com'
 import { useRef } from 'react'
 
 function ModalAsesoria({ show, handleClose }) {
@@ -11,33 +10,53 @@ function ModalAsesoria({ show, handleClose }) {
   const [mensajeConfirm, setMensajeConfirm] = useState('')
   const [mensajeError, setMensajeError] = useState('')
 
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
   const sendEmail = (e) => {
     e.preventDefault()
+    e.stopPropagation()
 
-    emailjs
-      .sendForm(
-        import.meta.env.EMAILJS_SERVICE_ID, // reemplazá con tu Service ID
-        import.meta.env.EMAILJS_TEMPLATE_ID, // reemplazá con tu Template ID
-        form.current,
-        import.meta.env.EMAILJS_USER_ID, // reemplazá con tu User ID
-      )
-      .then(
-        (result) => {
-          setMensajeConfirm('Mensaje enviado correctamente ✅')
+
+    fetch("https://formcarry.com/s/lzP9H92173G", {
+      method: 'POST',
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, message })
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.code === 200) {
+          //utilizamos el segundo modal
+          setMensajeConfirm('Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.')
           setShowConfirm(true)
-          form.current.reset()
-          handleClose()
-        },
-        (error) => {
-          setMensajeConfirm('Error al enviar el mensaje ❌')
-          setMensajeError(error.text)
+          
+        }
+        else if (response.code === 422) {
+          // Field validation failed
+          setError(response.message)
+          setMensajeConfirm('Error: ' + response.message)
           setShowConfirm(true)
-        },
-      )
-      .finally(() => {
-        form.current.reset() // limpia el formulario después de enviar
-        handleClose()
+        }
+        else {
+          // other error from formcarry
+          setError(response.message)
+          setMensajeConfirm('Error: ' + response.message)
+          setShowConfirm(true)
+        }
       })
+      .catch(error => {
+        // request related error.
+        setError(error.message ? error.message : error);
+        setMensajeConfirm('Error: ' + (error.message ? error.message : error))
+        setShowConfirm(true)
+
+      });
+
   }
 
   return (
@@ -55,6 +74,9 @@ function ModalAsesoria({ show, handleClose }) {
                 placeholder="Tu nombre"
                 name="nombre"
                 required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+
               />
             </Form.Group>
 
@@ -65,6 +87,8 @@ function ModalAsesoria({ show, handleClose }) {
                 placeholder="Tu correo"
                 name="email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
 
@@ -76,6 +100,9 @@ function ModalAsesoria({ show, handleClose }) {
                 placeholder="Escribe tu consulta"
                 name="mensaje"
                 required
+
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               />
             </Form.Group>
 
