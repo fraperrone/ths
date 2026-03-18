@@ -1,7 +1,5 @@
-import { useState } from 'react'
-import { Modal, Form, Button } from 'react-bootstrap'
-
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
+import { Modal, Form, Button, Spinner } from 'react-bootstrap'
 
 function ModalAsesoria({ show, handleClose }) {
   const form = useRef()
@@ -10,15 +8,17 @@ function ModalAsesoria({ show, handleClose }) {
   const [mensajeConfirm, setMensajeConfirm] = useState('')
   const [mensajeError, setMensajeError] = useState('')
 
-
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+
+  const [loading, setLoading] = useState(false) // nuevo estado
 
   const sendEmail = (e) => {
     e.preventDefault()
     e.stopPropagation()
 
+    setLoading(true) // activa spinner
 
     fetch("https://formcarry.com/s/lzP9H92173G", {
       method: 'POST',
@@ -31,32 +31,22 @@ function ModalAsesoria({ show, handleClose }) {
       .then(response => response.json())
       .then(response => {
         if (response.code === 200) {
-          //utilizamos el segundo modal
           setMensajeConfirm('Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.')
           setShowConfirm(true)
-          
-        }
-        else if (response.code === 422) {
-          // Field validation failed
-          setError(response.message)
+        } else {
           setMensajeConfirm('Error: ' + response.message)
-          setShowConfirm(true)
-        }
-        else {
-          // other error from formcarry
-          setError(response.message)
-          setMensajeConfirm('Error: ' + response.message)
+          setMensajeError(response.message)
           setShowConfirm(true)
         }
       })
       .catch(error => {
-        // request related error.
-        setError(error.message ? error.message : error);
         setMensajeConfirm('Error: ' + (error.message ? error.message : error))
+        setMensajeError(error.message ? error.message : error)
         setShowConfirm(true)
-
-      });
-
+      })
+      .finally(() => {
+        setLoading(false) // desactiva spinner
+      })
   }
 
   return (
@@ -76,7 +66,6 @@ function ModalAsesoria({ show, handleClose }) {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-
               />
             </Form.Group>
 
@@ -100,14 +89,26 @@ function ModalAsesoria({ show, handleClose }) {
                 placeholder="Escribe tu consulta"
                 name="mensaje"
                 required
-
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />
             </Form.Group>
 
-            <Button variant="success" type="submit">
-              Enviar
+            <Button variant="success" type="submit" disabled={loading}>
+              {loading ? (
+                <>
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />{" "}
+                  Enviando...
+                </>
+              ) : (
+                "Enviar"
+              )}
             </Button>
           </Form>
         </Modal.Body>
@@ -132,5 +133,3 @@ function ModalAsesoria({ show, handleClose }) {
 }
 
 export default ModalAsesoria
-
-// prueba comentario
