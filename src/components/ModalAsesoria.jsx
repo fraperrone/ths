@@ -9,16 +9,17 @@ function ModalAsesoria({ show, handleClose }) {
 
   const [showConfirm, setShowConfirm] = useState(false)
   const [mensajeConfirm, setMensajeConfirm] = useState('')
+  const [mensajeError, setMensajeError] = useState('')
 
   const sendEmail = (e) => {
     e.preventDefault()
 
     emailjs
       .sendForm(
-        'TU_SERVICE_ID', // reemplazá con tu Service ID
-        'TU_TEMPLATE_ID', // reemplazá con tu Template ID
+        'service_lzylyvh', // reemplazá con tu Service ID
+        'template_exgfjad', // reemplazá con tu Template ID
         form.current,
-        'TU_USER_ID', // reemplazá con tu User ID
+        '5jxCSP9BokqDJ4ubJ', // reemplazá con tu User ID
       )
       .then(
         (result) => {
@@ -29,6 +30,7 @@ function ModalAsesoria({ show, handleClose }) {
         },
         (error) => {
           setMensajeConfirm('Error al enviar el mensaje ❌')
+          setMensajeError(error.text)
           setShowConfirm(true)
         },
       )
@@ -87,10 +89,10 @@ function ModalAsesoria({ show, handleClose }) {
       {/* Modal secundario de confirmación */}
       <Modal show={showConfirm} onHide={() => setShowConfirm(false)} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Resultado</Modal.Title>
+          <Modal.Title>{mensajeConfirm}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{mensajeConfirm}</p>
+          <p>{mensajeError}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => setShowConfirm(false)}>
