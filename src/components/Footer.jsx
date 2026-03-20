@@ -1,3 +1,5 @@
+// importamos matricula
+import matricula from '../assets/matricula.jpg'
 
 export default function Footer() {
   return (
@@ -7,10 +9,40 @@ export default function Footer() {
           <h5>Franco Perrone</h5>
           <p>Técnico en Higiene y Seguridad Laboral</p>
           <p>Matrícula CPSH: THS-000266 PBA</p>
+          {/* agregamos el link de cpsh  */}
+          <p>
+            <a
+              href="https://cpsh.com.ar/buscador-de-profesionales-3/"
+              className="text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Verificación de Matrícula
+            </a>
+          </p>
+          {/* agregamos foto de la matricula */}
+          <img
+            src={matricula}
+            alt="Matrícula CPSH"
+            style={{
+              maxWidth: '250px',
+              marginTop: '10px',
+              marginRight: '10px',
+              marginBottom: '10px',
+            }}
+          />
         </div>
+
+        {/* hacemos columna central */}
+
         <div className="col-md-6 text-center text-md-end">
           <p>
-            <a href="https://wa.me/5491170655032" className="text-white" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://wa.me/5491170655032"
+              className="text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               WhatsApp
             </a>
           </p>
