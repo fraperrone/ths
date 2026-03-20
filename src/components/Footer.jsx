@@ -6,10 +6,11 @@ export default function Footer() {
         <div className="col-md-6 text-center text-md-start">
           <h5>Franco Perrone</h5>
           <p>Técnico en Higiene y Seguridad Laboral</p>
+          <p>Matrícula CPSH: THS-000266 PBA</p>
         </div>
         <div className="col-md-6 text-center text-md-end">
           <p>
-            <a href="https://wa.me/5491112345678" className="text-white">
+            <a href="https://wa.me/5491170655032" className="text-white" target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>
           </p>
