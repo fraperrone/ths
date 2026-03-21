@@ -14,7 +14,8 @@ export default function AppRouter() {
         <Route path='/' element={<MainLayout />}>
           <Route index element={<Home />} />
 
-          {/*  */}
+          {/* creamos routa para no encontrada que vuelva a home */}
+          <Route path='*' element={<Home />} />
         </Route>
       </Routes>
     </div>
