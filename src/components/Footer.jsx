@@ -51,6 +51,22 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      {/* hacemos un row nuevo con una linea para poner mi autoria diseno y amntenimiento by franco perrone rey y mi contacto ponemos wi wp*/}
+      <div className="row mx-0 mt-3">
+        <div className="col text-center">
+          <p className="small">
+            Diseño y mantenimiento por Franco Perrone Rey | Contacto:{" "}
+            <a
+              href="https://wa.me/5491170655032"
+              className="text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+          </p>
+        </div>
+      </div>
     </footer>
   )
 }

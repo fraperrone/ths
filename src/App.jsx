@@ -1,19 +1,11 @@
-import { useState } from 'react'
-
 import './App.css'
-import Footer from './components/Footer'
-
-import MyNavbar from './components/Navbar'
+i
 import AppRouter from './router/AppRouter'
 
 function App() {
   return (
     <>
-      <MyNavbar />
-
       <AppRouter />
-
-      <Footer />
     </>
   )
 }
