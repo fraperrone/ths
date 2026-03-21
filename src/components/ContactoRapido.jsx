@@ -11,7 +11,7 @@ export default function ContactoRapido() {
         <Button
           variant="success"
           size="lg"
-          href="https://wa.me/5491112345678"
+          href="https://wa.me/5491170655032"
           className="ms-3"
         >
           WhatsApp
