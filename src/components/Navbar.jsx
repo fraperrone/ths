@@ -12,6 +12,7 @@ export default function MyNavbar() {
   const handleOpen = () => setShowModal(true) // abre el modal
   const handleClose = () => setShowModal(false) // cierra el modal
 
+  ////////////////////////////////////////////////////////////////
   // uilizamos useNavigate
   const navigate = useNavigate()
 
@@ -24,7 +25,7 @@ export default function MyNavbar() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand onClick={() => handleNavigate('/')}>
           Franco Perrone | Higiene & Seguridad
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
