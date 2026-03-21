@@ -1,10 +1,10 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 import auditoriaImg from "../assets/auditoria_seguridad.jpg";
-import capacitacionImg from "../assets/capacitacion.jpg";
-import ergonomiaImg from "../assets/ergonomia.jpg";
-import planesImg from "../assets/planes_seguridad.jpg"; // nueva imagen en assets
+// import capacitacionImg from "../assets/capacitacion.jpg";
+// import ergonomiaImg from "../assets/ergonomia.jpg";
+// import planesImg from "../assets/planes_seguridad.jpg"; // nueva imagen en assets
 
-function ServiciosDetalle() {
+function ServiciosPage() {
   const servicios = [
     {
       titulo: "Auditoría de Seguridad",
@@ -63,4 +63,4 @@ function ServiciosDetalle() {
   );
 }
 
-export default ServiciosDetalle;
+export default ServiciosPage;

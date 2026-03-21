@@ -1,7 +1,7 @@
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
-import miFoto from "../assets/mi_foto.jpg"; // reemplazá con tu archivo real en src/assets
+// import miFoto from "../assets/mi_foto.jpg"; // reemplazá con tu archivo real en src/assets
 
-function SobreMi() {
+function SobreMiPage() {
   return (
     <Container className="mt-4">
       <Row>
@@ -48,4 +48,4 @@ function SobreMi() {
   );
 }
 
-export default SobreMi;
+export default SobreMiPage;

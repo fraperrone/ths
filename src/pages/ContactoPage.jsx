@@ -1,6 +1,6 @@
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
-function Contacto() {
+function ContactoPage() {
   return (
     <Container className="mt-4">
       <Row>
@@ -41,4 +41,4 @@ function Contacto() {
   );
 }
 
-export default Contacto;
+export default ContactoPage;
