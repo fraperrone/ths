@@ -21,7 +21,6 @@ export default function MyNavbar() {
     navigate(path) // navega a la ruta especificada
   }
 
-
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
@@ -31,19 +30,27 @@ export default function MyNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link onClick={() => handleNavigate('/')}>
-              Inicio
-            </Nav.Link>
+            <Nav.Link onClick={() => handleNavigate('/')}>Inicio</Nav.Link>
             {/* Servicio en mantenimiento */}
             <Nav.Link onClick={() => handleNavigate('/servicios')}>
               Servicios
             </Nav.Link>
+
+            {/* agregramos Archivos link */}
+            <Nav.Link onClick={() => handleNavigate('/archivos')}>
+              Archivos
+            </Nav.Link>
+
             {/* Para futuro: */}
             {/* <Nav.Link href="#proyectos">Proyectos</Nav.Link> */}
             {/* <Nav.Link onClick={() => handleNavigate('/contacto')}>
               Contacto
             </Nav.Link> */}
-            <Button variant="outline-light" className="ms-3" onClick={handleOpen}>
+            <Button
+              variant="outline-light"
+              className="ms-3"
+              onClick={handleOpen}
+            >
               Solicitar Asesoría
             </Button>
             {/* Modal separado en otro componente */}

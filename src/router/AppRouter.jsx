@@ -9,6 +9,7 @@ import ContactoPage from '../pages/ContactoPage'
 import SobreMiPage from '../pages/SobreMiPage'
 import ServiciosPage from '../pages/ServiciosPage'
 import HomePage from '../pages/HomePage'
+import ArchivosPage from '../pages/ArchivosPage'
 
 
 
@@ -23,6 +24,7 @@ export default function AppRouter() {
           <Route path='sobre-mi' element={<SobreMiPage />} />
           <Route path='servicios' element={<ServiciosPage />} />
           <Route path='home' element={<HomePage />} />
+          <Route path='archivos' element={<ArchivosPage />} />
 
           {/* creamos routa para no encontrada que vuelva a home */}
           <Route path='*' element={<Home />} />

@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react'
 import { Modal, Form, Button, Spinner } from 'react-bootstrap'
 
+import sendEmail from '../utils/emailService' // importamos función de envío
+
 function ModalAsesoria({ show, handleClose }) {
   const form = useRef()
 
@@ -14,39 +16,33 @@ function ModalAsesoria({ show, handleClose }) {
 
   const [loading, setLoading] = useState(false) // nuevo estado
 
-  const sendEmail = (e) => {
+  const sendContact = async (e) => {
     e.preventDefault()
     e.stopPropagation()
 
     setLoading(true) // activa spinner
 
-    fetch("https://formcarry.com/s/lzP9H92173G", {
-      method: 'POST',
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, message })
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response.code === 200) {
-          setMensajeConfirm('Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.')
-          setShowConfirm(true)
-        } else {
-          setMensajeConfirm('Error: ' + response.message)
-          setMensajeError(response.message)
-          setShowConfirm(true)
-        }
-      })
-      .catch(error => {
-        setMensajeConfirm('Error: ' + (error.message ? error.message : error))
-        setMensajeError(error.message ? error.message : error)
-        setShowConfirm(true)
-      })
-      .finally(() => {
-        setLoading(false) // desactiva spinner
-      })
+    //modificamos con sendEmail
+    const response = await sendEmail({ name, email, message })
+
+    if (response.code === 200) {
+      setMensajeConfirm(
+        'Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.',
+      )
+      setShowConfirm(true)
+    } else {
+      setMensajeConfirm('Error: ' + response.message)
+      setMensajeError(response.message)
+      setShowConfirm(true)
+    }
+
+    setLoading(false) // desactiva spinner
+
+    // Limpiar el formulario después de enviar
+    setName('')
+    setEmail('')
+    setMessage('')
+    
   }
 
   return (
@@ -56,7 +52,7 @@ function ModalAsesoria({ show, handleClose }) {
           <Modal.Title>Solicitar Asesoría</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form ref={form} onSubmit={sendEmail}>
+          <Form ref={form} onSubmit={sendContact}>
             <Form.Group className="mb-3" controlId="formNombre">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
@@ -103,11 +99,11 @@ function ModalAsesoria({ show, handleClose }) {
                     size="sm"
                     role="status"
                     aria-hidden="true"
-                  />{" "}
+                  />{' '}
                   Enviando...
                 </>
               ) : (
-                "Enviar"
+                'Enviar'
               )}
             </Button>
           </Form>
