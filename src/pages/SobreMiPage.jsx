@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
-// import miFoto from "../assets/mi_foto.jpg"; // reemplazá con tu archivo real en src/assets
+import miFoto from "../assets/foto-perfil.jpg"; // reemplazá con tu archivo real en src/assets
 
 function SobreMiPage() {
   return (

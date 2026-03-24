@@ -41,6 +41,11 @@ export default function MyNavbar() {
               Archivos
             </Nav.Link>
 
+            {/* agregamos la pagina sobre-mi */}
+            <Nav.Link onClick={() => handleNavigate('/sobre-mi')}>
+              Sobre mí
+            </Nav.Link>
+
             {/* Para futuro: */}
             {/* <Nav.Link href="#proyectos">Proyectos</Nav.Link> */}
             {/* <Nav.Link onClick={() => handleNavigate('/contacto')}>
