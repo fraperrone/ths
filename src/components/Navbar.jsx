@@ -35,9 +35,9 @@ export default function MyNavbar() {
               Inicio
             </Nav.Link>
             {/* Servicio en mantenimiento */}
-            {/* <Nav.Link onClick={() => handleNavigate('/servicios')}>
+            <Nav.Link onClick={() => handleNavigate('/servicios')}>
               Servicios
-            </Nav.Link> */}
+            </Nav.Link>
             {/* Para futuro: */}
             {/* <Nav.Link href="#proyectos">Proyectos</Nav.Link> */}
             {/* <Nav.Link onClick={() => handleNavigate('/contacto')}>
