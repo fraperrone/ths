@@ -40,9 +40,9 @@ export default function MyNavbar() {
             </Nav.Link> */}
             {/* Para futuro: */}
             {/* <Nav.Link href="#proyectos">Proyectos</Nav.Link> */}
-            <Nav.Link onClick={() => handleNavigate('/contacto')}>
+            {/* <Nav.Link onClick={() => handleNavigate('/contacto')}>
               Contacto
-            </Nav.Link>
+            </Nav.Link> */}
             <Button variant="outline-light" className="ms-3" onClick={handleOpen}>
               Solicitar Asesoría
             </Button>
